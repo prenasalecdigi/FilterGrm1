@@ -1,9 +1,8 @@
-/* style.css */
+/* style.css (POPOLNOMA POPRAVLJEN) */
 
 :root{
   --bg:#0b0f14;
   --panel:#111826;
-  --panel2:#0f1724;
   --text:#e7eefc;
   --muted:#9fb0cc;
   --accent:#4da3ff;
@@ -11,15 +10,18 @@
   --radius:18px;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial,
+               "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
   background: linear-gradient(180deg, #070a0e 0%, #0b0f14 60%, #070a0e 100%);
   color:var(--text);
 }
 
+/* Top bar */
 .topbar{
   padding:14px 16px;
   display:flex;
@@ -33,9 +35,10 @@ body{
   z-index:10;
   backdrop-filter: blur(10px);
 }
-.brand{font-weight:800; letter-spacing:.2px}
-.hint{color:var(--muted); font-size:13px}
+.brand{ font-weight:800; letter-spacing:.2px; }
+.hint{ color:var(--muted); font-size:13px; }
 
+/* Layout */
 .wrap{
   max-width:980px;
   margin:0 auto;
@@ -44,9 +47,10 @@ body{
   gap:14px;
 }
 
+/* Stage (9:16) */
 .stage{
   width:100%;
-  aspect-ratio: 9 / 16; /* OBVEZNO */
+  aspect-ratio: 9 / 16;
   background:#000;
   border-radius: var(--radius);
   position:relative;
@@ -55,34 +59,35 @@ body{
   border:1px solid rgba(255,255,255,.08);
 }
 
+/* Video */
 #video{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit: cover; /* OBVEZNO */
-  transform: scaleX(-1); /* selfie “mirror” kot pri večini kamer */
+  object-fit: cover;
+  transform: scaleX(-1); /* selfie mirror */
 }
 
-/* Overlay PNG z luknjo */
+/* Overlay PNG */
 .overlay{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit: contain; /* OBVEZNO */
+  object-fit: contain;
   pointer-events:none;
   user-select:none;
 }
 
-/* Nalepke layer */
+/* Stickers layer */
 .stickers-layer{
   position:absolute;
   inset:0;
   pointer-events:auto;
 }
 
-/* Emoji nalepka element */
+/* Emoji sticker element */
 .sticker{
   position:absolute;
   left:50%;
@@ -92,17 +97,17 @@ body{
   line-height:1;
   cursor:grab;
   user-select:none;
-  touch-action:none; /* pomembno za vlečenje na telefonu */
+  touch-action:none;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
 }
 .sticker:active{ cursor:grabbing; }
-
 .sticker.selected{
   outline:2px dashed rgba(77,163,255,.9);
   outline-offset:6px;
   border-radius:14px;
 }
 
+/* Status */
 .status{
   position:absolute;
   left:12px;
@@ -117,6 +122,7 @@ body{
   display:none;
 }
 
+/* Controls */
 .controls{
   background: rgba(17,24,38,.55);
   border: 1px solid rgba(255,255,255,.08);
@@ -135,6 +141,7 @@ body{
   font-weight:700;
   font-size:16px;
   cursor:pointer;
+  text-align:center;
 }
 .btn:hover{ background: rgba(255,255,255,.10); }
 .btn:active{ transform: translateY(1px); }
@@ -152,15 +159,15 @@ body{
   padding:10px 12px;
   font-size:14px;
 }
-
 .divider{
   height:1px;
   background: rgba(255,255,255,.10);
   margin:12px 0;
 }
 
-.sticker-tools{display:grid; gap:10px;}
-.sticker-title{color:var(--muted); font-size:13px}
+/* Sticker tools */
+.sticker-tools{ display:grid; gap:10px; }
+.sticker-title{ color:var(--muted); font-size:13px; }
 
 .emoji-bar{
   display:flex;
@@ -183,6 +190,7 @@ body{
   gap:10px;
 }
 
+/* Editor */
 .editor{
   margin-top:6px;
   padding:12px;
@@ -192,7 +200,7 @@ body{
   display:grid;
   gap:10px;
 }
-.editor-title{font-weight:800}
+.editor-title{ font-weight:800; }
 .slider{
   display:grid;
   gap:6px;
@@ -200,9 +208,12 @@ body{
   font-size:13px;
 }
 .slider input{ width:100%; }
-.smallhint{color:var(--muted); font-size:12px; opacity:.95}
+.smallhint{ color:var(--muted); font-size:12px; opacity:.95; }
 
-/* Modal */
+/* -------------------- MODAL -------------------- */
+/* pomembno: hidden mora vedno zmagati */
+.modal[hidden]{ display:none !important; }
+
 .modal{
   position:fixed;
   inset:0;
@@ -212,6 +223,7 @@ body{
   padding:16px;
   z-index:999;
 }
+
 .modal-card{
   width:min(520px, 100%);
   background: rgba(17,24,38,.96);
@@ -220,6 +232,7 @@ body{
   overflow:hidden;
   box-shadow: 0 18px 70px rgba(0,0,0,.55);
 }
+
 .modal-head{
   display:flex;
   align-items:center;
@@ -227,7 +240,8 @@ body{
   padding:12px 14px;
   border-bottom:1px solid rgba(255,255,255,.10);
 }
-.modal-title{font-weight:900}
+.modal-title{ font-weight:900; }
+
 .iconbtn{
   border:1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.06);
@@ -236,17 +250,20 @@ body{
   padding:8px 10px;
   cursor:pointer;
 }
+
 .result-img{
   width:100%;
   height:auto;
   display:block;
   background:#000;
 }
+
 .modal-actions{
   display:grid;
   gap:10px;
   padding:12px 14px;
 }
+
 .modal-note{
   margin:0;
   padding:0 14px 14px;
@@ -255,8 +272,10 @@ body{
   line-height:1.35;
 }
 
-/* Desktop layout */
+/* Desktop */
 @media (min-width: 860px){
-  .wrap{ grid-template-columns: 1.1fr .9fr; align-items:start; }
-  .controls .btn{ font-size:16px; }
+  .wrap{
+    grid-template-columns: 1.1fr .9fr;
+    align-items:start;
+  }
 }
