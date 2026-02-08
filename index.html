@@ -1,0 +1,98 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Foto filter (zelen.png) + emoji nalepke</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">📷 Foto filter</div>
+    <div class="hint">Overlay: <b>zelen.png</b> • Oder: <b>9:16</b></div>
+  </header>
+
+  <main class="wrap">
+    <!-- 9:16 “oder” -->
+    <section class="stage" id="stage" aria-label="Predogled kamere">
+      <video id="video" playsinline muted autoplay></video>
+
+      <!-- PNG overlay z luknjo -->
+      <img id="overlay" class="overlay" src="zelen.png" alt="Overlay" />
+
+      <!-- Emoji nalepke (DOM layer) -->
+      <div id="stickersLayer" class="stickers-layer" aria-hidden="true"></div>
+
+      <!-- status/napake -->
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Kontrole -->
+    <section class="controls">
+      <button id="btnShot" class="btn primary" type="button">📸 Fotografiraj</button>
+      <button id="btnFlip" class="btn" type="button">🔄 Obrni kamero</button>
+
+      <div class="divider"></div>
+
+      <div class="sticker-tools">
+        <div class="sticker-title">Emoji nalepke (tapni za dodajanje):</div>
+
+        <div class="emoji-bar" id="emojiBar" aria-label="Emoji izbira"></div>
+
+        <div class="row">
+          <button id="btnCustomEmoji" class="btn small" type="button">➕ Dodaj svoj emoji</button>
+          <button id="btnClearStickers" class="btn small danger" type="button">🗑 Počisti nalepke</button>
+        </div>
+
+        <div class="editor" id="editor" hidden>
+          <div class="editor-title">Urejanje nalepke</div>
+
+          <label class="slider">
+            Velikost
+            <input id="sizeSlider" type="range" min="24" max="220" value="96" />
+          </label>
+
+          <label class="slider">
+            Rotacija
+            <input id="rotSlider" type="range" min="-180" max="180" value="0" />
+          </label>
+
+          <div class="row">
+            <button id="btnBringFront" class="btn small" type="button">⬆️ Na vrh</button>
+            <button id="btnDeleteSticker" class="btn small danger" type="button">❌ Izbriši</button>
+            <button id="btnDoneEdit" class="btn small" type="button">✅ Končaj</button>
+          </div>
+
+          <div class="smallhint">Namig: nalepko premikaš z vlečenjem (touch ali miška).</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal fallback za iOS / ko download ne deluje -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Predogled fotografije</div>
+        <button id="btnCloseModal" class="iconbtn" type="button" aria-label="Zapri">✕</button>
+      </div>
+
+      <img id="resultImg" class="result-img" alt="Zajeta fotografija" />
+
+      <div class="modal-actions">
+        <a id="downloadLink" class="btn primary" href="#" download="fotofilter.png">⬇️ Shrani sliko</a>
+        <button id="btnShare" class="btn" type="button">📤 Deli / Shrani</button>
+      </div>
+
+      <p class="modal-note">
+        Če si na iPhone/iOS Safari in se prenos ne sproži:
+        <b>tapni “Deli / Shrani”</b> (če je na voljo) ali
+        <b>dolgo pritisni</b> na sliko in izberi “Save Image / Shrani sliko”.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
